@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-07-17T20:41:40.837384Z",
+      "created": "2025-07-17T20:45:09.698379Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-07-17T20:41:39.854499Z",
+      "last_modified": "2025-07-17T20:45:08.692699Z",
       "mimetype": "application/x-tar",
       "name": "package.tar.gz",
       "path": "package.tar.gz",
@@ -15,11 +15,11 @@
       "writable": true
     }
   ],
-  "created": "2025-07-17T20:41:40.837170Z",
+  "created": "2025-07-17T20:45:09.698184Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-07-17T20:41:40.837170Z",
+  "last_modified": "2025-07-17T20:45:09.698184Z",
   "mimetype": null,
   "name": "",
   "path": "",
