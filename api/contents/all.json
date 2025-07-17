@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-07-17T20:41:40.837384Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-07-17T20:41:39.854499Z",
+      "mimetype": "application/x-tar",
+      "name": "package.tar.gz",
+      "path": "package.tar.gz",
+      "size": 139424,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2025-07-17T20:41:40.837170Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-07-17T20:41:40.837170Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
