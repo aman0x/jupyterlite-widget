@@ -1,8 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -euo pipefail
 
-set -eux
+# Install micromamba if not present
+if ! command -v micromamba &> /dev/null; then
+    curl -Ls https://micro.mamba.pm/api/micromamba/osx-64/latest | tar -xvj bin/micromamba
+    sudo mv bin/micromamba /usr/local/bin/
+fi
 
-npm run clean
-jupyter labextension develop ./extension
+rm -rf _output
 ./package.sh
-jupyter lite serve
+jupyter lite build
+jupyter lite serve --port=8000
