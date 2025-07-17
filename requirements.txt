@@ -4,3 +4,5 @@ jupyterlite-pyodide-kernel==0.1.2
 plotly==5.17.0
 -e ./extension
 IPython  # only for IDE assistance
+pandas==2.0.3
+numpy==1.24.3
