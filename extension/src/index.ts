@@ -1,4 +1,7 @@
-import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
+import {
+  JupyterFrontEnd,
+  JupyterFrontEndPlugin
+} from '@jupyterlab/application';
 import * as Comlink from 'comlink';
 import initKernelPy from './initKernelPy';
 import { IFileBrowserCommands } from '@jupyterlab/filebrowser';
@@ -8,7 +11,7 @@ const pendingWorkers: MyWorker[] = [];
 class MyWorker extends Worker {
   constructor(scriptURL: string | URL, options?: WorkerOptions) {
     super(scriptURL, options);
-    const { grist } = (window as any);
+    const { grist } = window as any;
     if (grist) {
       exposeWorker(this, grist);
     } else {
@@ -21,38 +24,38 @@ window.Worker = MyWorker;
 
 const emptyNotebook = {
   content: {
-    'metadata': {
-      'language_info': {
-        'codemirror_mode': {
-          'name': 'python',
-          'version': 3
+    metadata: {
+      language_info: {
+        codemirror_mode: {
+          name: 'python',
+          version: 3
         },
-        'file_extension': '.py',
-        'mimetype': 'text/x-python',
-        'name': 'python',
-        'nbconvert_exporter': 'python',
-        'pygments_lexer': 'ipython3',
-        'version': '3.11'
+        file_extension: '.py',
+        mimetype: 'text/x-python',
+        name: 'python',
+        nbconvert_exporter: 'python',
+        pygments_lexer: 'ipython3',
+        version: '3.11'
       },
-      'kernelspec': {
-        'name': 'python',
-        'display_name': 'Python (Pyodide)',
-        'language': 'python'
+      kernelspec: {
+        name: 'python',
+        display_name: 'Python (Pyodide)',
+        language: 'python'
       }
     },
-    'nbformat_minor': 4,
-    'nbformat': 4,
-    'cells': [
+    nbformat_minor: 4,
+    nbformat: 4,
+    cells: [
       {
-        'cell_type': 'code',
-        'source': '',
-        'metadata': {},
-        'execution_count': null,
-        'outputs': []
+        cell_type: 'code',
+        source: '',
+        metadata: {},
+        execution_count: null,
+        outputs: []
       }
     ]
   },
-  format: 'json' as const,
+  format: 'json' as const
 };
 
 let currentRecord: any = null;
@@ -75,16 +78,19 @@ const plugin: JupyterFrontEndPlugin<void> = {
       const grist = (window as any).grist;
 
       app.serviceManager.contents.fileChanged.connect(async (_, change) => {
-        if (change.type === 'save' && change.newValue?.path === 'notebook.ipynb') {
+        if (
+          change.type === 'save' &&
+          change.newValue?.path === 'notebook.ipynb'
+        ) {
           const withoutOutputs = {
             ...change.newValue,
             content: {
               ...change.newValue.content,
               cells: change.newValue.content.cells.map((cell: any) => ({
                 ...cell,
-                outputs: 'outputs' in cell ? [] : undefined,
-              })),
-            },
+                outputs: 'outputs' in cell ? [] : undefined
+              }))
+            }
           };
           grist.setOption('notebook', withoutOutputs);
         }
@@ -96,14 +102,17 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
       grist.ready();
 
-      const notebook = await grist.getOption('notebook') || emptyNotebook;
+      const notebook = (await grist.getOption('notebook')) || emptyNotebook;
       await app.serviceManager.contents.save('notebook.ipynb', notebook);
-      await app.commands.execute('filebrowser:open-path', { path: 'notebook.ipynb' });
+      await app.commands.execute('filebrowser:open-path', {
+        path: 'notebook.ipynb'
+      });
 
       console.log('JupyterLab extension grist-widget is activated!');
 
       const kernel = await getKernel(app);
-      kernel.requestExecute({ code: initKernelPy() });
+      const future = kernel.requestExecute({ code: initKernelPy() });
+      await future.done; // Wait for bootstrap to complete
 
       for (const worker of pendingWorkers) {
         exposeWorker(worker, grist);
@@ -120,13 +129,16 @@ async function delay(ms: number): Promise<void> {
 }
 
 function exposeWorker(worker: Worker, grist: any) {
-  Comlink.expose({
-    grist: {
-      ...grist,
-      getTable: (tableId: string) => Comlink.proxy(grist.getTable(tableId)),
-      getCurrentRecord: () => currentRecord,
-    }
-  }, worker);
+  Comlink.expose(
+    {
+      grist: {
+        ...grist,
+        getTable: (tableId: string) => Comlink.proxy(grist.getTable(tableId)),
+        getCurrentRecord: () => currentRecord
+      }
+    },
+    worker
+  );
 }
 
 async function getKernel(app: JupyterFrontEnd) {
