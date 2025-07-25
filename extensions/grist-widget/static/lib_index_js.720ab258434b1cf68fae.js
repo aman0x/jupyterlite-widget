@@ -83,45 +83,71 @@ const plugin = {
         script.src = 'https://docs.getgrist.com/grist-plugin-api.js';
         script.id = 'grist-plugin-api';
         script.addEventListener('load', async () => {
-            const grist = window.grist;
-            app.serviceManager.contents.fileChanged.connect(async (_, change) => {
-                var _a;
-                if (change.type === 'save' &&
-                    ((_a = change.newValue) === null || _a === void 0 ? void 0 : _a.path) === 'notebook.ipynb') {
-                    const withoutOutputs = {
-                        ...change.newValue,
-                        content: {
-                            ...change.newValue.content,
-                            cells: change.newValue.content.cells.map((cell) => ({
-                                ...cell,
-                                outputs: 'outputs' in cell ? [] : undefined
-                            }))
+            try {
+                const grist = window.grist;
+                // Bootstrap packages first, regardless of Grist API
+                console.log('Starting package bootstrap...');
+                const kernel = await getKernel(app);
+                await delay(3000); // Longer delay for deployment
+                console.log('Executing bootstrap code...');
+                const future = kernel.requestExecute({ code: (0,_initKernelPy__WEBPACK_IMPORTED_MODULE_2__["default"])() });
+                await future.done;
+                console.log('Bootstrap execution finished');
+                // Handle Grist integration (may fail in standalone mode)
+                try {
+                    if (grist) {
+                        app.serviceManager.contents.fileChanged.connect(async (_, change) => {
+                            var _a;
+                            if (change.type === 'save' &&
+                                ((_a = change.newValue) === null || _a === void 0 ? void 0 : _a.path) === 'notebook.ipynb') {
+                                const withoutOutputs = {
+                                    ...change.newValue,
+                                    content: {
+                                        ...change.newValue.content,
+                                        cells: change.newValue.content.cells.map((cell) => ({
+                                            ...cell,
+                                            outputs: 'outputs' in cell ? [] : undefined
+                                        }))
+                                    }
+                                };
+                                grist.setOption('notebook', withoutOutputs);
+                            }
+                        });
+                        grist.onRecord((record) => {
+                            currentRecord = record;
+                        });
+                        grist.ready();
+                        const notebook = (await grist.getOption('notebook')) || emptyNotebook;
+                        await app.serviceManager.contents.save('notebook.ipynb', notebook);
+                        await app.commands.execute('filebrowser:open-path', {
+                            path: 'notebook.ipynb'
+                        });
+                        for (const worker of pendingWorkers) {
+                            exposeWorker(worker, grist);
                         }
-                    };
-                    grist.setOption('notebook', withoutOutputs);
+                    }
+                    else {
+                        // Standalone mode - create default notebook
+                        await app.serviceManager.contents.save('notebook.ipynb', emptyNotebook);
+                        await app.commands.execute('filebrowser:open-path', {
+                            path: 'notebook.ipynb'
+                        });
+                    }
                 }
-            });
-            grist.onRecord((record) => {
-                currentRecord = record;
-            });
-            grist.ready();
-            const notebook = (await grist.getOption('notebook')) || emptyNotebook;
-            await app.serviceManager.contents.save('notebook.ipynb', notebook);
-            await app.commands.execute('filebrowser:open-path', {
-                path: 'notebook.ipynb'
-            });
-            console.log('JupyterLab extension grist-widget is activated!');
-            const kernel = await getKernel(app);
-            // Wait for kernel to be fully ready
-            await delay(2000);
-            console.log('Executing bootstrap code...');
-            const future = kernel.requestExecute({ code: (0,_initKernelPy__WEBPACK_IMPORTED_MODULE_2__["default"])() });
-            await future.done; // Wait for bootstrap to complete
-            console.log('Bootstrap execution finished');
-            for (const worker of pendingWorkers) {
-                exposeWorker(worker, grist);
+                catch (gristError) {
+                    console.log('Grist API not available, running in standalone mode');
+                    // Create default notebook for standalone mode
+                    await app.serviceManager.contents.save('notebook.ipynb', emptyNotebook);
+                    await app.commands.execute('filebrowser:open-path', {
+                        path: 'notebook.ipynb'
+                    });
+                }
+                console.log('JupyterLab extension grist-widget is activated!');
+                await app.commands.execute('notebook:run-all-cells');
             }
-            await app.commands.execute('notebook:run-all-cells');
+            catch (error) {
+                console.error('Extension activation failed:', error);
+            }
         });
         document.head.appendChild(script);
     }
@@ -220,4 +246,4 @@ kw_api = grist
 /***/ })
 
 }]);
-//# sourceMappingURL=lib_index_js.9b4cd9f600eef958f8a1.js.map
+//# sourceMappingURL=lib_index_js.720ab258434b1cf68fae.js.map
