@@ -87,7 +87,7 @@
     "extension": true,
     "outputDir": "grist_jupyterlab_widget/labextension",
     "_build": {
-      "load": "static/remoteEntry.88e258261fe71adfa380.js",
+      "load": "static/remoteEntry.4a127fd084fcbb14f1ae.js",
       "extension": "./extension",
       "style": "./style"
     }

@@ -112,8 +112,12 @@ const plugin = {
             });
             console.log('JupyterLab extension grist-widget is activated!');
             const kernel = await getKernel(app);
+            // Wait for kernel to be fully ready
+            await delay(2000);
+            console.log('Executing bootstrap code...');
             const future = kernel.requestExecute({ code: (0,_initKernelPy__WEBPACK_IMPORTED_MODULE_2__["default"])() });
             await future.done; // Wait for bootstrap to complete
+            console.log('Bootstrap execution finished');
             for (const worker of pendingWorkers) {
                 exposeWorker(worker, grist);
             }
@@ -184,18 +188,17 @@ function code() {
         .href;
     // language=Python
     return `
-print("Installing packages...")
+  console.log("Bootstrap starting...");
+  print("Bootstrap starting...");
+
 import micropip
 await micropip.install([
-    'requests',
-    'numpy',
-    'pandas',
+    'requests', 'numpy', 'pandas',
     'https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.1.0-py3-none-any.whl'
 ])
-print("Packages installed successfully")
 
 async def __bootstrap_grist(url):
-    from pyodide.http import pyfetch  # noqa
+    from pyodide.http import pyfetch
     import io
     import tarfile
 
@@ -204,12 +207,11 @@ async def __bootstrap_grist(url):
     with tarfile.open(fileobj=bytes_file) as tar:
         tar.extractall()
 
-    import grist.browser  # noqa
+    import grist.browser
     return grist.browser.grist
 
 grist = await __bootstrap_grist(${JSON.stringify(packageUrl)})
 kw_api = grist
-print("Bootstrap complete")
 `;
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
@@ -218,4 +220,4 @@ print("Bootstrap complete")
 /***/ })
 
 }]);
-//# sourceMappingURL=lib_index_js.1d3cde52ea272d3f0b2d.js.map
+//# sourceMappingURL=lib_index_js.9b4cd9f600eef958f8a1.js.map
