@@ -10,8 +10,8 @@
         {
           "test": "/(?<!\\.raw)\\.css$/",
           "use": [
-            "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/node_modules/style-loader/dist/cjs.js",
-            "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/node_modules/css-loader/dist/cjs.js"
+            "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/node_modules/style-loader/dist/cjs.js",
+            "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/node_modules/css-loader/dist/cjs.js"
           ]
         },
         {
@@ -81,7 +81,7 @@
           "test": "/\\.js$/",
           "enforce": "pre",
           "use": [
-            "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/node_modules/@jupyterlab/builder/node_modules/source-map-loader/dist/cjs.js"
+            "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/node_modules/@jupyterlab/builder/node_modules/source-map-loader/dist/cjs.js"
           ]
         }
       ]
@@ -91,8 +91,8 @@
         "url": false,
         "buffer": false,
         "crypto": false,
-        "path": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/node_modules/path-browserify/index.js",
-        "process": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/node_modules/process/browser.js"
+        "path": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/node_modules/path-browserify/index.js",
+        "process": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/node_modules/process/browser.js"
       }
     },
     "watchOptions": {
@@ -102,7 +102,7 @@
     "output": {
       "hashFunction": "sha256",
       "filename": "[name].[contenthash].js",
-      "path": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/grist_jupyterlab_widget/labextension/static",
+      "path": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/grist_jupyterlab_widget/labextension/static",
       "publicPath": "auto"
     },
     "plugins": [
@@ -123,9 +123,9 @@
           },
           "filename": "remoteEntry.[contenthash].js",
           "exposes": {
-            "./index": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/lib/index.js",
-            "./extension": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/lib/index.js",
-            "./style": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/style/index.js"
+            "./index": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/lib/index.js",
+            "./extension": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/lib/index.js",
+            "./style": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/style/index.js"
           },
           "shared": {
             "@jupyterlab/application": {
@@ -652,7 +652,7 @@
             "grist-widget": {
               "version": "0.7.0",
               "singleton": true,
-              "import": "/Users/amanchandel/Work/keyward/bkp/jupyterlite-widget/extension/lib/index.js"
+              "import": "/Users/amanchandel/Work/keyward/jupyterlite-widget/extension/lib/index.js"
             }
           }
         }

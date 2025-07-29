@@ -1,18 +1,4 @@
 {
-  "PipliteAddon": {
-    "disablePyPIFallback": false,
-    "piplite_urls": [
-      "https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.1.0-py3-none-any.whl",
-      "https://pypi.org/simple/requests/",
-      "https://pypi.org/simple/numpy/",
-      "https://pypi.org/simple/pandas/",
-      "https://pypi.org/simple/matplotlib/",
-      "https://pypi.org/simple/scipy/",
-      "https://pypi.org/simple/statsmodels/",
-      "https://pypi.org/simple/pygments/",
-      "https://pypi.org/simple/markdown/"
-    ]
-  },
   "jupyter-config-data": {
     "appName": "JupyterLite",
     "appUrl": "./lab",
@@ -41,7 +27,7 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.dd51583acf462f30c49d.js",
+        "load": "static/remoteEntry.139308e27ca93d3012b7.js",
         "name": "grist-widget",
         "style": "./style"
       },
