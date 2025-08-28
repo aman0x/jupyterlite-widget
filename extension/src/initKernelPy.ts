@@ -1,6 +1,6 @@
 function code() {
   const packageUrl = new URL('../files/package.tar.gz', window.location.href).href;
-  const keywardWheelUrl = new URL('./files/keyward-0.6.0-py3-none-any.whl', window.location.href).href;
+  const keywardWheelUrl = new URL('../files/keyward-0.6.0-py3-none-any.whl', window.location.href).href;
 
   // language=Python
   return `
@@ -17,7 +17,7 @@ async def __bootstrap_grist(url, keyward_wheel_url):
 
     # Install packages
     import micropip
-    packages_to_install = [keyward_wheel_url, "requests", "numpy", "pandas" , "stashm]
+    packages_to_install = [keyward_wheel_url, "requests", "numpy", "pandas", "stash"]
 
     for package in packages_to_install:
         try:
