@@ -1,7 +1,6 @@
 {
   "PipliteAddon": {
     "piplite_urls": [
-      "https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.6.0-py3-none-any.whl",
       "https://pypi.org/simple/requests/",
       "https://pypi.org/simple/numpy/",
       "https://pypi.org/simple/pandas/",
@@ -353,7 +352,9 @@
     "licensesUrl": "./lab/api/licenses",
     "litePluginSettings": {
       "@jupyterlite/pyodide-kernel-extension:kernel": {
+        "disablePyPIFallback": false,
         "pipliteUrls": [
+          "./files/keyward-0.6.0-py3-none-any.whl",
           "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=559fdb0c528ad0e0843f12d3dec4e043c112bcfe56ede80ae019755d81c930b0"
         ],
         "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.24.0/pyc/pyodide.js"
