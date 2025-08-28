@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-08-28T16:04:41.567882Z",
+      "created": "2025-08-28T16:09:09.555072Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-08-28T16:04:38.625674Z",
+      "last_modified": "2025-08-28T16:09:06.616185Z",
       "mimetype": "application/x-tar",
       "name": "package.tar.gz",
       "path": "./package.tar.gz",
@@ -16,7 +16,7 @@
     },
     {
       "content": null,
-      "created": "2025-08-28T16:04:41.567379Z",
+      "created": "2025-08-28T16:09:09.554711Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-08-28T16:04:41.567712Z",
+  "created": "2025-08-28T16:09:09.554918Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-08-28T16:04:41.567712Z",
+  "last_modified": "2025-08-28T16:09:09.554918Z",
   "mimetype": null,
   "name": ".",
   "path": ".",
