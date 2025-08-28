@@ -33,7 +33,7 @@
 	},
 	"PipliteAddon": {
 		"piplite_urls": [
-			"https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.1.0-py3-none-any.whl",
+			"https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.6.0-py3-none-any.whl",
 			"https://pypi.org/simple/requests/",
 			"https://pypi.org/simple/numpy/",
 			"https://pypi.org/simple/pandas/",
