@@ -35,38 +35,38 @@ class MyWorker extends Worker {
 window.Worker = MyWorker;
 const emptyNotebook = {
     content: {
-        'metadata': {
-            'language_info': {
-                'codemirror_mode': {
-                    'name': 'python',
-                    'version': 3
+        metadata: {
+            language_info: {
+                codemirror_mode: {
+                    name: 'python',
+                    version: 3
                 },
-                'file_extension': '.py',
-                'mimetype': 'text/x-python',
-                'name': 'python',
-                'nbconvert_exporter': 'python',
-                'pygments_lexer': 'ipython3',
-                'version': '3.11'
+                file_extension: '.py',
+                mimetype: 'text/x-python',
+                name: 'python',
+                nbconvert_exporter: 'python',
+                pygments_lexer: 'ipython3',
+                version: '3.11'
             },
-            'kernelspec': {
-                'name': 'python',
-                'display_name': 'Python (Pyodide)',
-                'language': 'python'
+            kernelspec: {
+                name: 'python',
+                display_name: 'Python (Pyodide)',
+                language: 'python'
             }
         },
-        'nbformat_minor': 4,
-        'nbformat': 4,
-        'cells': [
+        nbformat_minor: 4,
+        nbformat: 4,
+        cells: [
             {
-                'cell_type': 'code',
-                'source': '',
-                'metadata': {},
-                'execution_count': null,
-                'outputs': []
+                cell_type: 'code',
+                source: '',
+                metadata: {},
+                execution_count: null,
+                outputs: []
             }
         ]
     },
-    format: 'json',
+    format: 'json'
 };
 let currentRecord = null;
 /**
@@ -86,16 +86,17 @@ const plugin = {
             const grist = window.grist;
             app.serviceManager.contents.fileChanged.connect(async (_, change) => {
                 var _a;
-                if (change.type === 'save' && ((_a = change.newValue) === null || _a === void 0 ? void 0 : _a.path) === 'notebook.ipynb') {
+                if (change.type === 'save' &&
+                    ((_a = change.newValue) === null || _a === void 0 ? void 0 : _a.path) === 'notebook.ipynb') {
                     const withoutOutputs = {
                         ...change.newValue,
                         content: {
                             ...change.newValue.content,
                             cells: change.newValue.content.cells.map((cell) => ({
                                 ...cell,
-                                outputs: 'outputs' in cell ? [] : undefined,
-                            })),
-                        },
+                                outputs: 'outputs' in cell ? [] : undefined
+                            }))
+                        }
                     };
                     grist.setOption('notebook', withoutOutputs);
                 }
@@ -104,12 +105,15 @@ const plugin = {
                 currentRecord = record;
             });
             grist.ready();
-            const notebook = await grist.getOption('notebook') || emptyNotebook;
+            const notebook = (await grist.getOption('notebook')) || emptyNotebook;
             await app.serviceManager.contents.save('notebook.ipynb', notebook);
-            await app.commands.execute('filebrowser:open-path', { path: 'notebook.ipynb' });
+            await app.commands.execute('filebrowser:open-path', {
+                path: 'notebook.ipynb'
+            });
             console.log('JupyterLab extension grist-widget is activated!');
             const kernel = await getKernel(app);
-            kernel.requestExecute({ code: (0,_initKernelPy__WEBPACK_IMPORTED_MODULE_2__["default"])() });
+            const future = kernel.requestExecute({ code: (0,_initKernelPy__WEBPACK_IMPORTED_MODULE_2__["default"])() });
+            await future.done; // Wait for bootstrap to complete
             for (const worker of pendingWorkers) {
                 exposeWorker(worker, grist);
             }
@@ -126,7 +130,7 @@ function exposeWorker(worker, grist) {
         grist: {
             ...grist,
             getTable: (tableId) => comlink__WEBPACK_IMPORTED_MODULE_0__.proxy(grist.getTable(tableId)),
-            getCurrentRecord: () => currentRecord,
+            getCurrentRecord: () => currentRecord
         }
     }, worker);
 }
@@ -176,9 +180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 function code() {
-    const packageUrl = new URL('../files/package.tar.gz', window.location.href)
-        .href;
-    const keywardWheelUrl = new URL('../files/keyward-0.1.0-py3-none-any.whl', window.location.href).href;
+    const packageUrl = new URL('../files/package.tar.gz', window.location.href).href;
+    const keywardWheelUrl = new URL('./files/keyward-0.6.0-py3-none-any.whl', window.location.href).href;
     // language=Python
     return `
 async def __bootstrap_grist(url, keyward_wheel_url):
@@ -192,18 +195,24 @@ async def __bootstrap_grist(url, keyward_wheel_url):
     with tarfile.open(fileobj=bytes_file) as tar:
         tar.extractall()
 
-    # Install keyward package
+    # Install packages
     import micropip
-    try:
-        await micropip.install(keyward_wheel_url)
-        print("keyward installed successfully")
-    except Exception as e:
-        print(f"Failed to install keyward: {e}")
+    packages_to_install = [keyward_wheel_url, "requests", "numpy", "pandas", "stash"]
+
+    for package in packages_to_install:
+        try:
+            await micropip.install(package)
+            print(f"Installed: {package}")
+        except Exception as e:
+            print(f"Failed to install {package}: {e}")
+
+    print("Package installation complete")
 
     import grist.browser  # noqa
     return grist.browser.grist
 
 grist = await __bootstrap_grist(${JSON.stringify(packageUrl)}, ${JSON.stringify(keywardWheelUrl)})
+kwApi =  grist
 `;
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
@@ -212,4 +221,4 @@ grist = await __bootstrap_grist(${JSON.stringify(packageUrl)}, ${JSON.stringify(
 /***/ })
 
 }]);
-//# sourceMappingURL=lib_index_js.bac59d73c9b064335732.js.map
+//# sourceMappingURL=lib_index_js.624a71e8d1d050b56ed0.js.map
