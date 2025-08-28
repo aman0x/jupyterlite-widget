@@ -181,7 +181,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function code() {
     const packageUrl = new URL('../files/package.tar.gz', window.location.href).href;
-    const keywardWheelUrl = new URL('./files/keyward-0.6.0-py3-none-any.whl', window.location.href).href;
+    const keywardWheelUrl = new URL('../files/keyward-0.6.0-py3-none-any.whl', window.location.href).href;
     // language=Python
     return `
 async def __bootstrap_grist(url, keyward_wheel_url):
@@ -221,4 +221,4 @@ kwApi =  grist
 /***/ })
 
 }]);
-//# sourceMappingURL=lib_index_js.624a71e8d1d050b56ed0.js.map
+//# sourceMappingURL=lib_index_js.b504f00d23c5c46c4198.js.map

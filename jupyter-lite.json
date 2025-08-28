@@ -1,7 +1,7 @@
 {
   "PipliteAddon": {
     "piplite_urls": [
-      "https://raw.githubusercontent.com/aman0x/package.whl/main/keyward-0.6.0-py3-none-any.whl",
+      "./files/keyward-0.6.0-py3-none-any.whl",
       "https://pypi.org/simple/requests/",
       "https://pypi.org/simple/numpy/",
       "https://pypi.org/simple/pandas/",
@@ -55,7 +55,7 @@
       {
         "extension": "./extension",
         "liteExtension": false,
-        "load": "static/remoteEntry.22c198ac1f3ed39c3db9.js",
+        "load": "static/remoteEntry.3cbf3bae892f4ec9c3d4.js",
         "name": "grist-widget",
         "style": "./style"
       },
