@@ -9,7 +9,7 @@
     <link
       id="jupyter-lite-main"
       rel="preload"
-      href="../build/lab/bundle.js?_=2f9b70f"
+      href="../build/lab/bundle.js?_=a1c462a"
       main="index"
       as="script"
     />
@@ -23,15 +23,14 @@
     <script>
       (async function () {
         const { pathname, origin, search, hash } = window.location;
-        if (pathname.match(/(index.html|\/?)$/) == null) {
+        if (pathname.match(/(index.html|\/)$/) == null) {
           window.location.href = `${origin}${pathname}/${search}${hash}`;
           return;
         }
         await import(
-          '../config-utils.js?_=2f9b70f'
+          '../config-utils.js?_=a1c462a'
         );
       }.call(this));
     </script>
   </head>
-  <body data-notebook="lab"></body>
 </html>

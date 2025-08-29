@@ -1,6 +1,11 @@
 {
 	"jupyter-lite-schema-version": 0,
 	"jupyter-config-data": {
+		"litePluginSettings": {
+			"@jupyterlite/pyodide-kernel-extension:kernel": {
+				"pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.24.0/pyc/pyodide.js"
+			}
+		},
 		"settingsOverrides": {
 			"@jupyterlab/statusbar-extension:plugin": {
 				"startMode": "single",
@@ -26,11 +31,9 @@
 			"jupyterlab-tour"
 		]
 	},
-	"litePluginSettings": {
-		"@jupyterlite/pyodide-kernel-extension:kernel": {
-			"pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js",
-			"pipliteUrls": [
-			"./files/keyward-0.6.0-py3-none-any.whl",
+	"PipliteAddon": {
+		"piplite_urls": [
+			"./files/keyward-0.6.1-py3-none-any.whl",
 			"https://pypi.org/simple/requests/",
 			"https://pypi.org/simple/numpy/",
 			"https://pypi.org/simple/pandas/",
@@ -54,7 +57,6 @@
 			"https://pypi.org/simple/folium/",
 			"https://pypi.org/simple/pygments/",
 			"https://pypi.org/simple/markdown/"
-			]
-		}
+		]
 	}
 }
