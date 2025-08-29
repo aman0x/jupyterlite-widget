@@ -1,60 +1,73 @@
 {
-	"jupyter-lite-schema-version": 0,
-	"jupyter-config-data": {
-		"settingsOverrides": {
-			"@jupyterlab/statusbar-extension:plugin": {
-				"startMode": "single",
-				"visible": false
-			},
-			"@jupyterlab/docmanager-extension:plugin": {
-				"autosaveInterval": 0.2
-			}
-		},
-		"exposeAppInBrowser": true,
-		"enableMemoryStorage": true,
-		"contentsStorageDrivers": ["memoryStorageDriver"],
-		"settingsStorageDrivers": [
-			"asyncStorage",
-			"webSQLStorage",
-			"localStorageWrapper",
-			"memoryStorageDriver"
-		],
-		"disabledExtensions": [
-			"@jupyterlite/server-extension:service-worker",
-			"@jupyterlab/running-extension:plugin",
-			"@jupyterlab/application-extension:property-inspector",
-			"jupyterlab-tour"
-		]
-	},
-	"litePluginSettings": {
-		"@jupyterlite/pyodide-kernel-extension:kernel": {
-			"pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js",
-			"pipliteUrls": [
-			"./files/keyward-0.6.0-py3-none-any.whl",
-			"https://pypi.org/simple/requests/",
-			"https://pypi.org/simple/numpy/",
-			"https://pypi.org/simple/pandas/",
-			"https://pypi.org/simple/matplotlib/",
-			"https://pypi.org/simple/seaborn/",
-			"https://pypi.org/simple/scipy/",
-			"https://pypi.org/simple/scikit-learn/",
-			"https://pypi.org/simple/plotly/",
-			"https://pypi.org/simple/bokeh/",
-			"https://pypi.org/simple/statsmodels/",
-			"https://pypi.org/simple/beautifulsoup4/",
-			"https://pypi.org/simple/openpyxl/",
-			"https://pypi.org/simple/xlrd/",
-			"https://pypi.org/simple/altair/",
-			"https://pypi.org/simple/wordcloud/",
-			"https://pypi.org/simple/networkx/",
-			"https://pypi.org/simple/sympy/",
-			"https://pypi.org/simple/pillow/",
-			"https://pypi.org/simple/lxml/",
-			"https://pypi.org/simple/ipywidgets/",
-			"https://pypi.org/simple/folium/",
-			"https://pypi.org/simple/pygments/",
-			"https://pypi.org/simple/markdown/"
-			]
-		}
-	}
+  "PipliteAddon": {
+    "piplite_urls": [
+      "./files/keyward-0.6.1-py3-none-any.whl",
+      "https://pypi.org/simple/requests/",
+      "https://pypi.org/simple/numpy/",
+      "https://pypi.org/simple/pandas/",
+      "https://pypi.org/simple/matplotlib/",
+      "https://pypi.org/simple/seaborn/",
+      "https://pypi.org/simple/scipy/",
+      "https://pypi.org/simple/scikit-learn/",
+      "https://pypi.org/simple/plotly/",
+      "https://pypi.org/simple/bokeh/",
+      "https://pypi.org/simple/statsmodels/",
+      "https://pypi.org/simple/beautifulsoup4/",
+      "https://pypi.org/simple/openpyxl/",
+      "https://pypi.org/simple/xlrd/",
+      "https://pypi.org/simple/altair/",
+      "https://pypi.org/simple/wordcloud/",
+      "https://pypi.org/simple/networkx/",
+      "https://pypi.org/simple/sympy/",
+      "https://pypi.org/simple/pillow/",
+      "https://pypi.org/simple/lxml/",
+      "https://pypi.org/simple/ipywidgets/",
+      "https://pypi.org/simple/folium/",
+      "https://pypi.org/simple/pygments/",
+      "https://pypi.org/simple/markdown/"
+    ]
+  },
+  "jupyter-config-data": {
+    "appName": "JupyterLite",
+    "appUrl": "./lab",
+    "appVersion": "0.1.2",
+    "baseUrl": "./",
+    "contentsStorageDrivers": [
+      "memoryStorageDriver"
+    ],
+    "defaultKernelName": "python",
+    "disabledExtensions": [
+      "@jupyterlite/server-extension:service-worker",
+      "@jupyterlab/running-extension:plugin",
+      "@jupyterlab/application-extension:property-inspector",
+      "jupyterlab-tour"
+    ],
+    "enableMemoryStorage": true,
+    "exposeAppInBrowser": true,
+    "faviconUrl": "./lab/favicon.ico",
+    "litePluginSettings": {
+      "@jupyterlite/pyodide-kernel-extension:kernel": {
+        "pipliteUrls": [
+          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=559fdb0c528ad0e0843f12d3dec4e043c112bcfe56ede80ae019755d81c930b0"
+        ],
+        "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.24.0/pyc/pyodide.js"
+      }
+    },
+    "settingsOverrides": {
+      "@jupyterlab/docmanager-extension:plugin": {
+        "autosaveInterval": 0.2
+      },
+      "@jupyterlab/statusbar-extension:plugin": {
+        "startMode": "single",
+        "visible": false
+      }
+    },
+    "settingsStorageDrivers": [
+      "asyncStorage",
+      "webSQLStorage",
+      "localStorageWrapper",
+      "memoryStorageDriver"
+    ]
+  },
+  "jupyter-lite-schema-version": 0
 }
