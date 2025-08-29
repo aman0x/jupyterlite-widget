@@ -28,7 +28,7 @@
 	},
 	"litePluginSettings": {
 		"@jupyterlite/pyodide-kernel-extension:kernel": {
-			"pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.24.0/pyc/pyodide.js",
+			"pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js",
 			"pipliteUrls": [
 			"./files/keyward-0.6.0-py3-none-any.whl",
 			"https://pypi.org/simple/requests/",
