@@ -28,6 +28,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -m \"Deploy `git rev-parse --verify --short HEAD`\"",
     "start": "./dev.sh",
-    "build": "npm run clean && ./package.sh && jupyter lite build --output-dir build && cp -r files build/ && cp jupyter-lite.json build/ && cp package.json build/package.json"
+    "build": "npm run clean && ./package.sh && jupyter lite build --output-dir build && cp package.json build/package.json"
   }
 }
