@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-08-29T11:09:42.921257Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-08-29T11:08:33.890565Z",
+      "mimetype": null,
+      "name": "keyward-0.6.3-py3-none-any.whl",
+      "path": "./keyward-0.6.3-py3-none-any.whl",
+      "size": 13381,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-08-29T11:09:42.921576Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-08-29T11:09:39.699951Z",
+      "mimetype": "application/x-tar",
+      "name": "package.tar.gz",
+      "path": "./package.tar.gz",
+      "size": 139428,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-08-29T10:29:36.471169Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-08-29T10:28:05.842570Z",
+      "mimetype": null,
+      "name": "keyward-0.6.3-py3-none-any.whl",
+      "path": "./keyward-0.6.3-py3-none-any.whl",
+      "size": 13333,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2025-08-29T11:09:42.921429Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-08-29T11:09:42.921429Z",
+  "mimetype": null,
+  "name": ".",
+  "path": ".",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
