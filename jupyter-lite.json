@@ -45,14 +45,6 @@
     "enableMemoryStorage": true,
     "exposeAppInBrowser": true,
     "faviconUrl": "./lab/favicon.ico",
-    "litePluginSettings": {
-      "@jupyterlite/pyodide-kernel-extension:kernel": {
-        "pipliteUrls": [
-          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=559fdb0c528ad0e0843f12d3dec4e043c112bcfe56ede80ae019755d81c930b0"
-        ],
-        "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.24.0/pyc/pyodide.js"
-      }
-    },
     "settingsOverrides": {
       "@jupyterlab/docmanager-extension:plugin": {
         "autosaveInterval": 0.2
