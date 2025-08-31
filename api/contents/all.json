@@ -8,8 +8,8 @@
       "hash_algorithm": null,
       "last_modified": "2025-08-29T11:08:33.890565Z",
       "mimetype": null,
-      "name": "keyward-0.6.3-py3-none-any.whl",
-      "path": "./keyward-0.6.3-py3-none-any.whl",
+      "name": "keyward-0.6.4-py3-none-any.whl",
+      "path": "./keyward-0.6.4-py3-none-any.whl",
       "size": 13381,
       "type": "file",
       "writable": true
@@ -25,20 +25,6 @@
       "name": "package.tar.gz",
       "path": "./package.tar.gz",
       "size": 139428,
-      "type": "file",
-      "writable": true
-    },
-    {
-      "content": null,
-      "created": "2025-08-29T10:29:36.471169Z",
-      "format": null,
-      "hash": null,
-      "hash_algorithm": null,
-      "last_modified": "2025-08-29T10:28:05.842570Z",
-      "mimetype": null,
-      "name": "keyward-0.6.3-py3-none-any.whl",
-      "path": "./keyward-0.6.3-py3-none-any.whl",
-      "size": 13333,
       "type": "file",
       "writable": true
     }
