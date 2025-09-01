@@ -1,6 +1,6 @@
 function code() {
   const packageUrl = new URL('../files/package.tar.gz', window.location.href).href;
-  const keywardWheelUrl = new URL('../files/keyward-0.6.5-py3-none-any.whl', window.location.href).href;
+  const keywardWheelUrl = new URL('../files/keyward-0.6.6-py3-none-any.whl', window.location.href).href;
 
   // language=Python
   return `
